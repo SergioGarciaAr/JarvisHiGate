@@ -1,0 +1,719 @@
+{
+  "duration_ms": 75,
+  "findings": [
+    {
+      "confidence": "low",
+      "evidence": [
+        {
+          "label": "Cloudflare (1.1.1.1:443)",
+          "source": "conexión TCP",
+          "value": "conectado en 30 ms"
+        },
+        {
+          "label": "Google (8.8.8.8:443)",
+          "source": "conexión TCP",
+          "value": "sin respuesta (tiempo agotado)"
+        },
+        {
+          "label": "apple.com (17.253.144.10:443)",
+          "source": "conexión TCP",
+          "value": "conectado en 30 ms"
+        }
+      ],
+      "id": "net.external.partial",
+      "kind": "warning",
+      "proposed_action": null,
+      "recommendation": "Otros destinos sí respondieron, así que la conexión funciona. Recuerda que un destino inaccesible no demuestra por sí solo que toda la conexión esté caída.",
+      "severity": "low",
+      "title": "Algún destino no respondió"
+    },
+    {
+      "confidence": "medium",
+      "evidence": [
+        {
+          "label": "Carga media (1 · 5 · 15 min)",
+          "source": "sysinfo",
+          "value": "1.63 · 2.08 · 2.28"
+        },
+        {
+          "label": "Núcleos",
+          "source": "sysinfo",
+          "value": "8"
+        }
+      ],
+      "id": "sys.load.ok",
+      "kind": "observation",
+      "proposed_action": null,
+      "recommendation": "No hace falta ninguna acción.",
+      "severity": "info",
+      "title": "Carga de CPU normal"
+    },
+    {
+      "confidence": "high",
+      "evidence": [
+        {
+          "label": "Volumen /System/Volumes/Data",
+          "source": "sysinfo",
+          "value": "390.4 GB libres de 460.4 GB (85 %)"
+        }
+      ],
+      "id": "disk.ok",
+      "kind": "observation",
+      "proposed_action": null,
+      "recommendation": "No hace falta ninguna acción.",
+      "severity": "info",
+      "title": "Espacio en disco suficiente"
+    },
+    {
+      "confidence": "high",
+      "evidence": [
+        {
+          "label": "Presión de memoria",
+          "source": "sysctl kern.memorystatus_vm_pressure_level",
+          "value": "normal"
+        },
+        {
+          "label": "Memoria libre según el kernel",
+          "source": "sysctl kern.memorystatus_level",
+          "value": "78 %"
+        },
+        {
+          "label": "Disponible",
+          "source": "sysinfo",
+          "value": "12.0 GB de 16.0 GB"
+        }
+      ],
+      "id": "mem.pressure.normal",
+      "kind": "observation",
+      "proposed_action": null,
+      "recommendation": "No hace falta ninguna acción.",
+      "severity": "info",
+      "title": "Presión de memoria normal"
+    },
+    {
+      "confidence": "high",
+      "evidence": [
+        {
+          "label": "proceso-0",
+          "source": "sysinfo",
+          "value": "0.7 GB · 5 %"
+        },
+        {
+          "label": "proceso-1",
+          "source": "sysinfo",
+          "value": "0.5 GB · 3 %"
+        },
+        {
+          "label": "proceso-2",
+          "source": "sysinfo",
+          "value": "0.5 GB · 3 %"
+        },
+        {
+          "label": "proceso-3",
+          "source": "sysinfo",
+          "value": "0.3 GB · 2 %"
+        },
+        {
+          "label": "proceso-4",
+          "source": "sysinfo",
+          "value": "0.3 GB · 2 %"
+        }
+      ],
+      "id": "mem.process.top",
+      "kind": "observation",
+      "proposed_action": null,
+      "recommendation": "Lista informativa; la memoria residente de un proceso puede incluir memoria compartida.",
+      "severity": "info",
+      "title": "proceso de prueba"
+    },
+    {
+      "confidence": "high",
+      "evidence": [
+        {
+          "label": "Puerta de enlace",
+          "source": "route -n get default",
+          "value": "192.168.1.1"
+        },
+        {
+          "label": "Interfaz",
+          "source": "route -n get default",
+          "value": "en0 (Wi-Fi)"
+        }
+      ],
+      "id": "net.route.ok",
+      "kind": "observation",
+      "proposed_action": null,
+      "recommendation": "No hace falta ninguna acción.",
+      "severity": "info",
+      "title": "Salida por en0 (Wi-Fi) hacia 192.168.1.1"
+    },
+    {
+      "confidence": "high",
+      "evidence": [
+        {
+          "label": "Ping a 192.168.1.1",
+          "source": "ping",
+          "value": "2/2 respuestas, media 2.0 ms"
+        }
+      ],
+      "id": "net.gateway.ok",
+      "kind": "observation",
+      "proposed_action": null,
+      "recommendation": "No hace falta ninguna acción.",
+      "severity": "info",
+      "title": "El router responde"
+    }
+  ],
+  "gaps": [
+    {
+      "reason": "Calculando la primera muestra",
+      "source": "sysinfo",
+      "what": "cpu"
+    },
+    {
+      "reason": "permiso denegado al ejecutar /usr/sbin/sysctl",
+      "source": "sysctl -n vm.swapusage",
+      "what": "Uso de swap"
+    },
+    {
+      "reason": "sin respuesta en 5000 ms",
+      "source": "vm_stat",
+      "what": "Estadísticas de memoria virtual"
+    },
+    {
+      "reason": "macOS no permite a una app sin privilegios leer la memoria de procesos de otros usuarios o del sistema",
+      "source": "sysinfo",
+      "what": "Memoria de 284 de 746 procesos"
+    }
+  ],
+  "generated_at": "2026-10-19T03:07:30.819450Z",
+  "memory": {
+    "available": 12901318656,
+    "free_level": 78,
+    "pressure": "normal",
+    "processes": {
+      "top": [
+        {
+          "memory": 798359552,
+          "name": "proceso-0",
+          "pid": 2397
+        },
+        {
+          "memory": 545996800,
+          "name": "proceso-1",
+          "pid": 8271
+        },
+        {
+          "memory": 528498688,
+          "name": "proceso-2",
+          "pid": 1539
+        },
+        {
+          "memory": 346619904,
+          "name": "proceso-3",
+          "pid": 1226
+        },
+        {
+          "memory": 316243968,
+          "name": "proceso-4",
+          "pid": 2372
+        },
+        {
+          "memory": 246906880,
+          "name": "proceso-5",
+          "pid": 10294
+        },
+        {
+          "memory": 213139456,
+          "name": "proceso-6",
+          "pid": 1360
+        },
+        {
+          "memory": 198246400,
+          "name": "proceso-7",
+          "pid": 719
+        },
+        {
+          "memory": 193347584,
+          "name": "proceso-8",
+          "pid": 762
+        },
+        {
+          "memory": 181239808,
+          "name": "proceso-9",
+          "pid": 10777
+        }
+      ],
+      "total": 746,
+      "without_data": 284
+    },
+    "swap": null,
+    "total": 17179869184,
+    "used": 9224241152,
+    "vm": null
+  },
+  "network": {
+    "dns": [
+      {
+        "addresses": [
+          "17.253.144.10"
+        ],
+        "error": null,
+        "host": "apple.com",
+        "ms": 0
+      },
+      {
+        "addresses": [
+          "17.253.144.10"
+        ],
+        "error": null,
+        "host": "cloudflare.com",
+        "ms": 0
+      }
+    ],
+    "dns_servers": [
+      "200.48.225.130"
+    ],
+    "gateway": {
+      "gateway": "192.168.1.1",
+      "stats": {
+        "avg_ms": 2.0,
+        "received": 2,
+        "send_error": null,
+        "transmitted": 2
+      }
+    },
+    "interfaces": [
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "anpi0",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "anpi1",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "anpi2",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "ap1",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "awdl0",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 1358,
+        "total_tx_packets": 12,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "bridge0",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": true,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "en0",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 1027224783,
+        "total_rx_packets": 951014,
+        "total_tx_bytes": 64447736,
+        "total_tx_packets": 227479,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "en1",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "en2",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "en3",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "en4",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "en5",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "en6",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1280,
+        "name": "gif0",
+        "rx_errors": 0,
+        "state": "down",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "llw0",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 16384,
+        "name": "lo0",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 19318686,
+        "total_rx_packets": 17046,
+        "total_tx_bytes": 19318686,
+        "total_tx_packets": 17046,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "nan0",
+        "rx_errors": 0,
+        "state": "down",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1280,
+        "name": "stf0",
+        "rx_errors": 0,
+        "state": "down",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 0,
+        "total_tx_packets": 0,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1380,
+        "name": "utun0",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 360,
+        "total_tx_packets": 4,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1500,
+        "name": "utun1",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 100,
+        "total_tx_packets": 1,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 2000,
+        "name": "utun2",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 360,
+        "total_tx_packets": 4,
+        "tx_errors": 0
+      },
+      {
+        "addresses": [
+          "192.0.2.10/24"
+        ],
+        "has_routable_ip": false,
+        "mac": "00:00:00:00:00:00",
+        "mtu": 1000,
+        "name": "utun3",
+        "rx_errors": 0,
+        "state": "up",
+        "total_rx_bytes": 0,
+        "total_rx_packets": 0,
+        "total_tx_bytes": 360,
+        "total_tx_packets": 4,
+        "tx_errors": 0
+      }
+    ],
+    "route": {
+      "gateway": "192.168.1.1",
+      "interface": "en0",
+      "status": "default"
+    },
+    "services": [
+      [
+        "en0",
+        "Wi-Fi"
+      ]
+    ],
+    "tcp": [
+      {
+        "detail": null,
+        "label": "Cloudflare",
+        "ms": 30,
+        "outcome": "connected",
+        "target": "1.1.1.1:443",
+        "via_dns": false
+      },
+      {
+        "detail": "sin respuesta en 3000 ms",
+        "label": "Google",
+        "ms": null,
+        "outcome": "timeout",
+        "target": "8.8.8.8:443",
+        "via_dns": false
+      },
+      {
+        "detail": null,
+        "label": "apple.com",
+        "ms": 30,
+        "outcome": "connected",
+        "target": "17.253.144.10:443",
+        "via_dns": true
+      }
+    ]
+  },
+  "notes": [
+    "En macOS la memoria «usada» incluye caché de archivos y memoria comprimida, así que un porcentaje alto es normal. La presión de memoria que informa el kernel es el indicador más fiable.",
+    "Las pruebas de red usan destinos concretos con un límite de tiempo. Que un destino no responda no demuestra por sí solo que toda la conexión a Internet esté caída: puede deberse a un cortafuegos, a un filtrado de la red o a un problema puntual de ese destino.",
+    "Diagnóstico de solo lectura: Jarvis no ha cerrado procesos, cambiado ajustes ni modificado archivos."
+  ],
+  "scope": "full",
+  "system": {
+    "cpu_cores": 8,
+    "cpu_percent": null,
+    "disk": {
+      "available_bytes": 419143436834,
+      "mount": "/System/Volumes/Data",
+      "total_bytes": 494384795648
+    },
+    "hostname": "mac-de-prueba",
+    "load_avg": [
+      1.62841796875,
+      2.080078125,
+      2.28076171875
+    ],
+    "mem_available": 12901318656,
+    "mem_total": 17179869184,
+    "mem_used": 9224241152,
+    "net_rx_per_sec": null,
+    "net_tx_per_sec": null,
+    "os_version": "macOS",
+    "swap_total": 0,
+    "swap_used": 0,
+    "timestamp": "2026-10-19T03:07:30.798318Z",
+    "unavailable": [
+      {
+        "metric": "cpu",
+        "reason": "Calculando la primera muestra"
+      },
+      {
+        "metric": "red",
+        "reason": "Calculando la primera muestra"
+      }
+    ],
+    "uptime_secs": 19640
+  }
+}

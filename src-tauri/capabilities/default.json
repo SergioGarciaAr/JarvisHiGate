@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Permisos mínimos para las ventanas principal y de panel rápido",
+  "windows": ["main", "quick"],
+  "permissions": ["core:default"]
+}
